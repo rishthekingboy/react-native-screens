@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image } from 'react-native'
 import { colors } from '../utils/colors'
+import { Feather } from '@expo/vector-icons';
 
 const Card = () => {
     return (
@@ -35,15 +36,19 @@ const Card = () => {
 const SpotifySearch = () => {
     const [text, onChangeText] = React.useState('');
     return (
-        <View style={styles.container}>
-            <ScrollView style={styles.scrollView}>
+        <ScrollView style={styles.scrollView}>
+            <View style={styles.container}>
                 <Text style={styles.searchLabel}>Search</Text>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={onChangeText}
-                    value={text}
-                    placeholder={"Artist, songs, or podcasts"}
-                />
+                <View style={styles.searchContainer}>
+                    <Feather name="search" size={24} color="gray" style={{ width: '10%', marginLeft: '5%' }} />
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={onChangeText}
+                        value={text}
+                        placeholder={"Artist, songs, or podcasts"}
+                    />
+                </View>
+
                 <Text style={styles.genereLabel}>Your top generes</Text>
                 {
                     // making array to iterte via map 
@@ -53,17 +58,27 @@ const SpotifySearch = () => {
                         </React.Fragment>
                     ))
                 }
-            </ScrollView>
-        </View>
+            </View>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
-        marginTop: 75,
-        marginLeft: 15,
-        marginRight: 15,
+        marginTop: 70,
+        paddingLeft: 15,
+        paddingRight: 15,
+    },
+    searchContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'row',
+        backgroundColor: "lightgray",
+        height: 45,
+        borderRadius: 3,
+        marginBottom: 15,
+
     },
     searchLabel: {
         fontWeight: 'bold',
@@ -71,19 +86,18 @@ const styles = StyleSheet.create({
         marginBottom: 18,
     },
     input: {
-        backgroundColor: "lightgray",
+        color: 'gray',
+        paddingRight: 10,
+        width: '85%',
         height: 45,
         paddingLeft: 10,
         fontWeight: 'bold',
         fontSize: 16,
         borderRadius: 3,
-        marginBottom: 15,
     },
     genereLabel: {
         fontWeight: 'bold',
         marginBottom: 15,
-    },
-    scrollView: {
     },
     cardsList: {
         display: 'flex',

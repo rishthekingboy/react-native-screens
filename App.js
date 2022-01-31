@@ -1,15 +1,17 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import MyTabs from "./components/BottomNavigations";
 import SpotifySearch from "./screens/SpotifySearch";
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.AndroidSafeArea}>
+    <SafeAreaView style={styles.droidSafeArea}>
       <SpotifySearch />
       {/* <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
       </View> */}
+      <MyTabs />
     </SafeAreaView>
   );
 }
@@ -23,7 +25,7 @@ const styles = StyleSheet.create({
   },
   droidSafeArea: {
     flex: 1,
-    paddingTop: Platform.OS === "android" ? 25 : 0,
+    paddingTop: Platform.OS === "android" ? 28 : 0,
   },
   AndroidSafeArea: {
     flex: 1,
